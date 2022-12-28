@@ -1,0 +1,58 @@
+import random
+import time
+p = True
+choices = ['rock', 'paper', 'scissors']
+wins = 0
+losses = 0
+while p == True:
+
+  computerChoice = random.choice(choices)
+
+  playerChoice = input("Will it be rock, paper or scissors? ")
+
+  for i in choices:
+    if playerChoice == i:
+
+      print((str(i.capitalize())) + '? ' + "Nice choice.")
+      if i == playerChoice:
+        break
+
+  else:
+    print("You didn't pick any of the three options! Pick again!")
+    continue
+  time.sleep(2)
+  print("Your opponent chose " + str(computerChoice) + ".")
+
+  win = (['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'paper'])
+
+  matchup = [playerChoice] + [computerChoice]
+  time.sleep(.8)
+  loss = reversed(matchup)
+
+  if matchup in win:
+    wins += 1
+    print("######Congratulations! You win!######")
+  
+  elif list(loss) in win: 
+    print("It's a loss")
+    losses += 1
+  else:
+    print("It's a draw!")
+    time.sleep(.5)
+  print("You have won " + str(wins) + " times and lost " + str(losses) + " times!")
+  time.sleep(.5)
+  if wins > losses:
+    print("You are winning!")
+  elif losses > wins:
+    print("I am winning!!!")
+  else: 
+    print("we are tied...")
+  print("Would you like to play again?")
+
+  restart = input("y or n?")
+  
+
+  
+  if restart.lower() == 'n':
+    p = False
+      
